@@ -32,7 +32,7 @@ SigLevel = Optional TrustAll
 
 [arch-mact2]
 Server = https://mirror.funami.tech/arch-mact2/os/x86_64
-SigLever = Optional TrustAll
+SigLevel = Optional TrustAll
 
 EOF
 
