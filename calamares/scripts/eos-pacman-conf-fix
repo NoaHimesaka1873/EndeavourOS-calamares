@@ -29,7 +29,7 @@ SigLevel = Optional TrustAll
 
 [arch-mact2]
 Server = https://mirror.funami.tech/$repo/os/$arch
-SigLever = Optional TrustAll
+SigLever = Never
 
 EOF
 
