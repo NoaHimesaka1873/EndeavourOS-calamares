@@ -28,8 +28,8 @@ Server = https://github.com/Redecorating/archlinux-t2-packages/releases/download
 SigLevel = Optional TrustAll
 
 [arch-mact2]
-Server = https://mirror.funami.tech/$repo/os/$arch
-SigLever = Never
+Server = https://mirror.funami.tech/arch-mact2/os/x86_64
+SigLever = Optional TrustAll
 
 EOF
 
