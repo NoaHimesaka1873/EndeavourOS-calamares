@@ -23,6 +23,14 @@ Main()
 SigLevel = PackageRequired
 Include = /etc/pacman.d/endeavouros-mirrorlist
 
+[Redecorating-t2]
+Server = https://github.com/Redecorating/archlinux-t2-packages/releases/download/repo
+SigLevel = Optional TrustAll
+
+[arch-mact2]
+Server = https://mirror.funami.tech/$repo/os/$arch
+SigLever = Optional TrustAll
+
 EOF
 
     # Make other adjustments in pacman.conf:

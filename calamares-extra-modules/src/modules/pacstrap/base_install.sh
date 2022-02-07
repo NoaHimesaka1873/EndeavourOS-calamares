@@ -33,9 +33,11 @@ grub2-theme-endeavouros
 inetutils
 jfsutils
 less
-linux
+linux-t2
 linux-firmware
-linux-headers
+linux-t2-headers
+apple-ibridge-dkms-git
+apple-bcm-wifi-firmware
 logrotate
 lsb-release
 lvm2
