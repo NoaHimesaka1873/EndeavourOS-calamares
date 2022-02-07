@@ -12,7 +12,8 @@ Main()
 
     # Go to /tmp.
     pushd /tmp >/dev/null
-
+    sudo pacman-key --recv-keys 8BE1FEE14302371DEF6F910A0E5877AC225D1980 --keyserver hkps://keyserver.ubuntu.com
+    pacman-key --recv-keys 8BE1FEE14302371DEF6F910A0E5877AC225D1980 --keyserver hkps://keyserver.ubuntu.com
     # Get the latest pacman.conf from Arch.
     yay -G pacman
 
@@ -20,7 +21,7 @@ Main()
     cat <<EOF >> pacman/pacman.conf
 
 [endeavouros]
-SigLevel = PackageRequired
+SigLevel = Optional TrustAll
 Include = /etc/pacman.d/endeavouros-mirrorlist
 
 [Redecorating-t2]
