@@ -4,13 +4,13 @@ args=()
 all=0
 
 while read -r line; do
-    if [[ $line != */vmlinuz ]]; then
+    if [[ $line != */vmlinuz-t2 ]]; then
         # triggers when it's a change to usr/lib/initcpio/*
         all=1
         continue
     fi
 
-    if ! read -r pkgbase > /dev/null 2>&1 < "${line%/vmlinuz}/pkgbase"; then
+    if ! read -r pkgbase > /dev/null 2>&1 < "${line%/vmlinuz-t2}/pkgbase"; then
         # if the kernel has no pkgbase, we skip it
         continue
     fi

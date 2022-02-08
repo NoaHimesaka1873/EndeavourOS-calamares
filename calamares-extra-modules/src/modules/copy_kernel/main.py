@@ -29,7 +29,7 @@ def run():
     except:
      pass # doing nothing on exception
     try:
-     subprocess.check_call(["cp", "/run/archiso/bootmnt/arch/boot/x86_64/vmlinuz-linux-lts", root_mount_point + "/boot/vmlinuz-linux"])
+     subprocess.check_call(["cp", "/run/archiso/bootmnt/arch/boot/x86_64/vmlinuz-linux-t2", root_mount_point + "/boot/vmlinuz-linux-t2"])
     except:
      pass # doing nothing on exception
 

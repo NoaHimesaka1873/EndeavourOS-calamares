@@ -3,4 +3,6 @@ haveged -w 1024
 pacman-key --init
 pkill haveged
 pacman-key --add /usr/share/pacman/keyrings/endeavouros.gpg && sudo pacman-key --lsign-key 497AF50C92AD2384C56E1ACA003DB8B0CB23504F
+pacman-key --recv-keys 8BE1FEE14302371DEF6F910A0E5877AC225D1980 --keyserver hkps://keyserver.ubuntu.com
+sudo pacman-key --lsign-key 8BE1FEE14302371DEF6F910A0E5877AC225D1980
 pacman-key --populate

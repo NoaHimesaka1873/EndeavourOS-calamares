@@ -441,20 +441,6 @@ _misc_cleanups() {
 _clean_up(){
     local xx
 
-    # Remove the "wrong" microcode.
-    if [ -x /usr/bin/device-info ] ; then
-        case "$(/usr/bin/device-info --cpu)" in
-            GenuineIntel)       _remove_ucode amd-ucode ;;
-            AuthenticAMD | *)   _remove_ucode intel-ucode ;;
-        esac
-    fi
-
-    # install or remove nvidia graphics stuff
-    _manage_nvidia_packages
-
-    # remove AMD and Intel graphics drivers if they are not needed
-    _remove_other_graphics_drivers
-
     # remove broadcom-wl-dkms if it is not needed
     _remove_broadcom_wifi_driver
 
@@ -595,4 +581,4 @@ _de_wm_config
 _clean_up
 _run_hotfix_end
 
-rm -R /etc/calamares /opt/extra-drivers
+rm -R /etc/calamares
