@@ -316,31 +316,7 @@ _remove_other_graphics_drivers() {
     fi
 }
 
-_remove_broadcom_wifi_driver_old() {
-    local pkgname=broadcom-wl-dkms
-    local wifi_pci
-    local wifi_driver
 
-    # _is_pkg_installed $pkgname && {
-        wifi_pci="$(lspci -k | grep -A4 " Network controller: ")"
-        if [ -n "$(lsusb | grep " Broadcom ")" ] || [ -n "$(echo "$wifi_pci" | grep " Broadcom ")" ] ; then
-            return
-        fi
-        wifi_driver="$(echo "$wifi_pci" | grep "Kernel driver in use")"
-        if [ -n "$(echo "$wifi_driver" | grep "in use: wl$")" ] ; then
-            return
-        fi
-        _remove_a_pkg $pkgname
-    # }
-}
-
-_remove_broadcom_wifi_driver() {
-    local pkgname=broadcom-wl-dkms
-    local file=/tmp/$pkgname.txt
-    if [ "$(cat $file 2>/dev/null)" = "no" ] ; then
-        _remove_a_pkg $pkgname
-    fi
-}
 
 _install_extra_drivers_to_target() {
     # Install special drivers to target if needed.
@@ -442,9 +418,6 @@ _clean_up(){
     local xx
 
     # remove broadcom-wl-dkms if it is not needed
-    _remove_broadcom_wifi_driver
-
-    _install_extra_drivers_to_target
 
     _misc_cleanups
 
@@ -579,6 +552,13 @@ _change_config_options
 _de_wm_config
 #_setup_personal
 _clean_up
-_run_hotfix_end
+
+mkdir -p /etc/modules-load.d
+touch /etc/modules-load.d/t2.conf
+cat << EOF > /etc/modules-load.d/t2.conf
+apple_ib_tb
+apple_ib_als
+brcmfmac
+EOF
 
 rm -R /etc/calamares
