@@ -187,6 +187,14 @@
           - tldr
           - sed
           - wget
+      - name: "Apple T2-based devices"
+        description: "Special kernel and drivers for Apple T2-based devices"
+        selected: true
+        packages:
+          - linux-t2
+          - linux-t2-headers
+          - apple-ibridge-dkms-git
+          - apple-bcm-wifi-firmware
 - name: "Firefox language package"
   description: "Add firefox language pack if possible"
   hidden: true
