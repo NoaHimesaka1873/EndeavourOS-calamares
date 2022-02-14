@@ -67,9 +67,9 @@ _manage_broadcom_wifi_driver() {
     local wifi_pci="$(lspci -k | sed -n '/ Network controller: /,/^[^ \t]/p' | sed '$d')"
 
     if [ -n "$(echo "$wifi_pci" | grep -w Broadcom)" ] ; then
-        echo "yes" > $targetfile
+        echo "no" > $targetfile
     elif [ -n "$(lsusb | grep -w Broadcom)" ] ; then
-        echo "yes" > $targetfile
+        echo "no" > $targetfile
     else
         echo "no" > $targetfile
     fi

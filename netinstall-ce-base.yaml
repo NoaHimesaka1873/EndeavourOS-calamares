@@ -29,7 +29,6 @@
         selected: true
         packages:
           - b43-fwcutter
-          - broadcom-wl-dkms
           - crda
           - dhclient
           - dialog
@@ -187,6 +186,24 @@
           - tldr
           - sed
           - wget
+- name: "Apple T2-based devices"
+  description: "Device-specific kernel and drivers for Apple T2-based devices (MUST INSTALL)"
+  hidden: false
+  selected: true
+  critical: true
+  packages:
+    - linux-t2
+    - linux-t2-headers
+    - apple-ibridge-dkms-git
+    - apple-bcm-wifi-firmware
+- name: "Extras for Apple T2-based devices"
+  description: "Device-specific configuration files for Apple T2-based devices. Check https://wiki.t2linux.org for more infomation."
+  hidden: false
+  selected: false
+  critical: true
+  packages:
+    - apple-t2-audio-config
+    - apple-t2-audio-config-alt
 - name: "Firefox language package"
   description: "Add firefox language pack if possible"
   hidden: true
