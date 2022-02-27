@@ -556,8 +556,6 @@ _clean_up
 mkdir -p /etc/modules-load.d
 touch /etc/modules-load.d/t2.conf
 cat << EOF > /etc/modules-load.d/t2.conf
-apple_ib_tb
-apple_ib_als
 brcmfmac
 EOF
 
