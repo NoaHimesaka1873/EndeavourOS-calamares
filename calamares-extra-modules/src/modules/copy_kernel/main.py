@@ -14,7 +14,7 @@ def run():
     """
 
     kernel_path = "/run/archiso/bootmnt/arch/boot/x86_64/"
-    kernel_root = "vmlinuz"
+    kernel_root = "vmlinuz-t2"
     ucode_tail = "ucode.img"
 
     root_mount_point = libcalamares.globalstorage.value("rootMountPoint")

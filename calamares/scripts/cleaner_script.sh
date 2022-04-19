@@ -67,21 +67,6 @@ _CopyFileToTarget() {
     cp "$file" "$targetdir"
 }
 
-_manage_broadcom_wifi_driver() {
-    local pkgname=broadcom-wl-dkms
-    local targetfile=/tmp/$chroot_path/tmp/$pkgname.txt
-    local wifi_pci="$(lspci -k | sed -n '/ Network controller: /,/^[^ \t]/p' | sed '$d')"
-
-    if [ -n "$(echo "$wifi_pci" | grep -w Broadcom)" ] ; then
-        echo "yes" > $targetfile
-    elif [ -n "$(lsusb | grep -w Broadcom)" ] ; then
-        echo "yes" > $targetfile
-    else
-        echo "no" > $targetfile
-    fi
-}
-
-
 _copy_files(){
     local config_file
     local target=/tmp/$chroot_path            # $target refers to the / folder of the installed system
@@ -96,26 +81,8 @@ _copy_files(){
         fi
     fi
 
-    # Communicate to chrooted system if
-    # - nvidia card is detected
-    # - livesession is running nvidia driver
-
-    local nvidia_file=$target/tmp/nvidia-info.bash
     local card=no
     local driver=no
-    local lspci="$(lspci -k)"
-    local latest_nvidia_series=495     # TODO: this number must be changed when Arch changes the Nvidia driver series number !!!
-
-    if [ -n "$(echo "$lspci" | grep -P 'VGA|3D|Display' | grep -w NVIDIA)" ] ; then
-        card=yes
-        [ -n "$(lsmod | grep -w nvidia)" ]                                                   && driver=yes
-        [ -n "$(echo "$lspci" | grep -wA2 NVIDIA | grep "Kernel driver in use: nvidia")" ]   && driver=yes
-        if [ "$driver" = "yes" ] ; then
-            _cleaner_msg info "using nvidia driver"
-        else
-            _cleaner_msg info "using nouveau driver"
-        fi
-    fi
     echo "nvidia_card=$card"     >> $nvidia_file
     echo "nvidia_driver=$driver" >> $nvidia_file
 
@@ -126,19 +93,6 @@ _copy_files(){
     _cleaner_msg info "copying 30-touchpad.conf to target"
     mkdir -p $target/usr/share/X11/xorg.conf.d
     cp /usr/share/X11/xorg.conf.d/30-touchpad.conf  $target/usr/share/X11/xorg.conf.d/
-
-    # copy extra drivers from /opt/extra-drivers to target's /opt/extra-drivers
-    if [ -n "$(/usr/bin/ls /opt/extra-drivers/*.zst 2>/dev/null)" ] ; then
-        _cleaner_msg info "copying extra drivers to target"
-        mkdir -p $target/opt/extra-drivers
-        cp /opt/extra-drivers/*.zst $target/opt/extra-drivers/
-    fi
-    if [ -n "$(lsmod | grep r8168)" ] ; then
-        _cleaner_msg info "detected usage of r8168 driver"
-        touch $target/tmp/r8168_in_use
-    fi
-
-    _manage_broadcom_wifi_driver
 
     # copy endeavouros-release file
     local file=/usr/lib/endeavouros-release

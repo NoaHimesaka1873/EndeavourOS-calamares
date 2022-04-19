@@ -196,7 +196,15 @@
           - tldr
           - sed
           - vi
-          - wget
+          - wg
+- name: "Extras for Apple T2-based devices"
+  description: "Device-specific configuration files for Apple T2-based devices. Check https://wiki.t2linux.org for more infomation."
+  hidden: false
+  selected: false
+  critical: true
+  packages:
+    - apple-t2-audio-config
+    - apple-t2-audio-config-alt
 - name: "Firefox and language package"
   description: "Add firefox and language pack if possible"
   hidden: false
@@ -205,24 +213,6 @@
   packages:
     - firefox
     - firefox-i18n-$LOCALE
-- name: "LTS Kernel in addition"
-  description: "Adding Long Term Supported Kernel in addition to main one"
-  hidden: false
-  selected: false
-  expanded: false
-  critical: true
-  packages:
-    - linux-lts
-    - linux-lts-headers
-- name: "Zen Kernel"
-  description: "Adding ZEN kernel in addition to main one"
-  hidden: false
-  selected: false
-  expanded: false
-  critical: true
-  packages:
-    - linux-zen
-    - linux-zen-headers
 - name: "XFCE4-Desktop"
   description: "XFCE4 - lightweight desktop fast and low on system resources, visually appealing and user friendly."
   hidden: false
