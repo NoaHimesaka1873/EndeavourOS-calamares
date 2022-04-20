@@ -23,6 +23,10 @@ Main()
 SigLevel = PackageRequired
 Include = /etc/pacman.d/endeavouros-mirrorlist
 
+[arch-mact2]
+SigLevel = Never
+Server = https://mirror.funami.tech/$repo/os/$arch
+
 EOF
 
     # Make other adjustments in pacman.conf:
