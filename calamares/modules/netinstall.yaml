@@ -29,7 +29,6 @@
         selected: true
         packages:
           - b43-fwcutter
-          - broadcom-wl-dkms
           - dhclient
           - dialog
           - dnsmasq
@@ -196,7 +195,7 @@
           - tldr
           - sed
           - vi
-          - wg
+          - wget
 - name: "Extras for Apple T2-based devices"
   description: "Device-specific configuration files for Apple T2-based devices. Check https://wiki.t2linux.org for more infomation."
   hidden: false

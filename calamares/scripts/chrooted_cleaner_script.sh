@@ -454,14 +454,12 @@ _clean_up(){
         esac
     fi
 
-    # install or remove nvidia graphics stuff
-    _manage_nvidia_packages
+    # install or remove nvidia graphics stuff\
 
     # remove AMD and Intel graphics drivers if they are not needed
     _remove_other_graphics_drivers
 
     # remove broadcom-wl-dkms if it is not needed
-    _remove_broadcom_wifi_driver
 
     _install_extra_drivers_to_target
 
