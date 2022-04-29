@@ -446,22 +446,9 @@ _misc_cleanups() {
 _clean_up(){
     local xx
 
-    # Remove the "wrong" microcode.
-    if [ -x /usr/bin/device-info ] ; then
-        case "$(/usr/bin/device-info --cpu)" in
-            GenuineIntel)       _remove_ucode amd-ucode ;;
-            AuthenticAMD | *)   _remove_ucode intel-ucode ;;
-        esac
-    fi
+    _remove_ucode amd-ucode
 
-    # install or remove nvidia graphics stuff\
-
-    # remove AMD and Intel graphics drivers if they are not needed
     _remove_other_graphics_drivers
-
-    # remove broadcom-wl-dkms if it is not needed
-
-    _install_extra_drivers_to_target
 
     _misc_cleanups
 
@@ -584,7 +571,6 @@ _run_hotfix_end() {
 
 _check_install_mode
 _endeavouros
-_virtual_machines
 #_change_config_options
 #_remove_gnome_software
 #_remove_discover
