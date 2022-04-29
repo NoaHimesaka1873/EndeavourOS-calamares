@@ -579,4 +579,4 @@ _endeavouros
 _clean_up
 _run_hotfix_end
 
-rm -R /etc/calamares /opt/extra-drivers
+rm -R /etc/calamares
