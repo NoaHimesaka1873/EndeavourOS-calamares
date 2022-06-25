@@ -614,7 +614,7 @@ Main() {
     _clean_up
     _run_hotfix_end
 
-    rm -rf /etc/calamares /opt/extra-drivers
+    rm -rf /etc/calamares
 
     _c_c_s_msg info "$filename done."
 }

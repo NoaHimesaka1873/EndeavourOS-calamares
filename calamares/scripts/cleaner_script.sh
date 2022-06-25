@@ -107,7 +107,6 @@ _copy_files(){
         touch $target/tmp/r8168_in_use
     fi
 
-    _manage_broadcom_wifi_driver
 
     # copy endeavouros-release file
     local file=/usr/lib/endeavouros-release
