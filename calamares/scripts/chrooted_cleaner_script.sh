@@ -603,6 +603,12 @@ Main() {
         _c_c_s_msg error "new username is unknown!"
     fi
 
+    if [ -f /etc/default/grub ]; then
+        sed -i 's/GRUB_CMDLINE_LINUX="/GRUB_CMDLINE_LINUX="intel_iommu=on iommu=pt pcie_ports=compat/g' /etc/default/grub
+        update-grub
+    else
+        _c_c_s_msg warning "GRUB config file not found"
+    fi
     _check_install_mode
     _endeavouros
     _virtual_machines
