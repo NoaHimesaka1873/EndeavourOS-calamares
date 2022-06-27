@@ -195,22 +195,13 @@
           - vi
           - wget
 - name: "Extras for Apple T2-based devices"
-	  description: "Device-specific configuration files for Apple T2-based devices. Check https://wiki.t2linux.org for more infomation."
-	  hidden: false
-	  selected: false
-	  critical: true
-	  packages:
-	    - apple-t2-audio-config
-	    - apple-t2-audio-config-alt
-- name: "Xanmod Kernel in addition"
-	  description: "Adding Xanmod kernel in addition to main one (Patched to support Macs with T2)" 
-	  hidden: false
-	  selected: false
-	  expanded: false
-	  critical: true
-	  packages:
-	    - linux-xanmod-edge-t2
-	    - linux-xanmod-edge-t2-headers
+  description: "Device-specific configuration files for Apple T2-based devices. Check https://wiki.t2linux.org for more infomation."
+  hidden: false
+  selected: false
+  critical: true
+  packages:
+    - apple-t2-audio-config
+    - apple-t2-audio-config-alt
 - name: "Firefox and language package"
   description: "Add firefox and language pack if possible"
   hidden: false
@@ -219,6 +210,15 @@
   packages:
     - firefox
     - firefox-i18n-$LOCALE
+- name: "Xanmod Kernel in addition"
+  description: "Adding Xanmod kernel in addition to main one (Patched to support Macs with T2)" 
+  hidden: false
+  selected: false
+  expanded: false
+  critical: true
+  packages:
+    - linux-xanmod-edge-t2
+    - linux-xanmod-edge-t2-headers
 - name: "Printing-Support"
   description: "Support for printing (Cups)"
   hidden: false
