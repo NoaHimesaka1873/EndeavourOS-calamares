@@ -602,7 +602,22 @@ Main() {
     if [ -z "$NEW_USER" ] ; then
         _c_c_s_msg error "new username is unknown!"
     fi
-
+    
+    # load t2 modules
+    if [ ! -d /etc/modules-load.d ]; then
+        mkdir /etc/modules-load.d/
+    fi
+    touch /etc/modules-load.d/t2.conf
+    cat > /etc/modules-load.d/t2.conf <<EOF
+# t2 modules
+apple-bce
+apple-ib_tb
+apple-ib_als
+apple_bce
+apple_ib_tb
+apple_ib_als
+EOF
+    # add kernel options
     if [ -f /etc/default/grub ]; then
         sed -i 's/GRUB_CMDLINE_LINUX="/GRUB_CMDLINE_LINUX="intel_iommu=on iommu=pt pcie_ports=compat/g' /etc/default/grub
         update-grub
