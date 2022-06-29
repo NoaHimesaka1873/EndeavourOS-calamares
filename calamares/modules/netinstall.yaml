@@ -28,7 +28,6 @@
         description: "Network apps drivers and tools"
         selected: true
         packages:
-          - b43-fwcutter
           - dhclient
           - dialog
           - dnsmasq
@@ -37,7 +36,6 @@
           - gnu-netcat
           - ipw2100-fw
           - ipw2200-fw
-          - iwd
           - modemmanager
           - nbd
           - ndisc6

@@ -28,7 +28,6 @@
         description: "Network apps drivers and tools"
         selected: true
         packages:
-          - b43-fwcutter
           - dhclient
           - dialog
           - dnsmasq
