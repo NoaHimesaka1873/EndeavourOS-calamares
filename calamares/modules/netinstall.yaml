@@ -193,7 +193,7 @@
           - vi
           - wget
 - name: "Extras for Apple T2-based devices"
-  description: "Device-specific configuration files for Apple T2-based devices. Check https://wiki.t2linux.org for more infomation."
+  description: "Device-specific configuration files for Apple T2-based devices. Check https://wiki.t2linux.org for more information."
   hidden: false
   selected: false
   critical: true
