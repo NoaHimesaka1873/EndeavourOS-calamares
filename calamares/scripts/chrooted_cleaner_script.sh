@@ -616,6 +616,7 @@ apple-ib_als
 apple_bce
 apple_ib_tb
 apple_ib_als
+brcmfmac
 EOF
     # add kernel options
     if [ -f /etc/default/grub ]; then
