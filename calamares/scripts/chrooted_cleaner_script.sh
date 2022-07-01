@@ -440,6 +440,12 @@ _misc_cleanups() {
     fi
 }
 
+_copy_mba91_soundconfig() {
+    cp /opt/extra-drivers/AppleT2.conf /usr/share/alsa/cards/AppleT2.conf
+    cp /opt/extra-drivers/apple-t2.conf /usr/share/alsa-card-profile/mixer/profile-sets/apple-t2.conf
+    cp /opt/extra-drivers/91-pulseaudio-custom.rules /usr/lib/udev/rules.d/91-pulseaudio-custom.rules
+}
+
 _clean_up(){
     local xx
 
@@ -625,6 +631,22 @@ EOF
     else
         _c_c_s_msg warning "GRUB config file not found"
     fi
+    # install audio configs
+    model=$(< /sys/devices/virtual/dmi/id/product_name)
+    if [ "$model" = "MacBookPro16,1" ] ; then
+	_c_c_s_msg info "installing audio configs for MacBookPro16,1"
+	pacman -U /opt/extra-drivers/apple-t2-audio-config-alt-0.1-5-any.pkg.tar.zst --noconfirm
+    elif [ "$model" = "MacBookPro16,4" ] ; then
+	_c_c_s_msg info "installing audio configs for MacBookPro16,4"
+	pacman -U /opt/extra-drivers/apple-t2-audio-config-alt-0.1-5-any.pkg.tar.zst --noconfirm
+    elif [ "$model" = "MacBookAir9,1" ] ; then
+	_c_c_s_msg info "installing audio configs for MacBookAir9,1"
+	_copy_mba91_soundconfig
+    else
+	_c_c_s_msg info "installing generic audio configs"
+	pacman -U /opt/extra-drivers/apple-t2-audio-config-0.1-5-any.pkg.tar.zst --noconfirm
+    fi
+
     _check_install_mode
     _endeavouros
     _virtual_machines
