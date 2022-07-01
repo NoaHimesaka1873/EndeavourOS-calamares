@@ -192,14 +192,6 @@
           - sed
           - vi
           - wget
-- name: "Extras for Apple T2-based devices"
-  description: "Device-specific configuration files for Apple T2-based devices. Check https://wiki.t2linux.org for more information."
-  hidden: false
-  selected: false
-  critical: true
-  packages:
-    - apple-t2-audio-config
-    - apple-t2-audio-config-alt
 - name: "Firefox and language package"
   description: "Add firefox and language pack if possible"
   hidden: false
