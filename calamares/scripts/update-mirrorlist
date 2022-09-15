@@ -16,7 +16,7 @@ CCCheck() {   # check validity of country code
 GetYourCountryCode() {
     local IP code
 
-    code="$(curl -Lsm 10 https://ipinfo.io/country)"
+    code="$(show-location-info country)"
     CCCheck "$code" && {
         echo "$code" ; return
     }
@@ -41,7 +41,7 @@ GetYourCountryCode() {
         echo "$code" ; return
     }
 
-    code="$(curl ipinfo.io 2>/dev/null | grep '"country":' | sed 's|^.*: "\([A-Z][A-Z]\)",$|\1|')"
+    code="$(show-location-info country)"
     CCCheck "$code" && {
         echo "$code" ; return
     }
@@ -118,7 +118,7 @@ RunCmd() {
 }
 
 Main() {
-    local VERSION="2.0.9"                   # started from 2.0!
+    local VERSION="2.1"                   # started from 2.0!
     local progname="$(basename "$0")"
     local mf=/etc/pacman.d/mirrorlist
     local bu=/tmp/mirrorlist.bu             # original mirrorlist, saved by Welcome
