@@ -632,20 +632,6 @@ EOF
         _c_c_s_msg warning "GRUB config file not found"
     fi
     # install audio configs
-    model=$(< /sys/devices/virtual/dmi/id/product_name)
-    if [ "$model" = "MacBookPro16,1" ] ; then
-	_c_c_s_msg info "installing audio configs for MacBookPro16,1"
-	pacman -U /opt/extra-drivers/apple-t2-audio-config-alt-0.1-5-any.pkg.tar.zst --noconfirm
-    elif [ "$model" = "MacBookPro16,4" ] ; then
-	_c_c_s_msg info "installing audio configs for MacBookPro16,4"
-	pacman -U /opt/extra-drivers/apple-t2-audio-config-alt-0.1-5-any.pkg.tar.zst --noconfirm
-    elif [ "$model" = "MacBookAir9,1" ] ; then
-	_c_c_s_msg info "installing audio configs for MacBookAir9,1"
-	_copy_mba91_soundconfig
-    else
-	_c_c_s_msg info "installing generic audio configs"
-	pacman -U /opt/extra-drivers/apple-t2-audio-config-0.1-5-any.pkg.tar.zst --noconfirm
-    fi
 
     _check_install_mode
     _endeavouros

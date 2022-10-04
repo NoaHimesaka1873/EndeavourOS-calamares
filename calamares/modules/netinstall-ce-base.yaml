@@ -126,6 +126,7 @@
           - alsa-firmware
           - alsa-plugins
           - alsa-utils
+          - apple-t2-audio-config
           - pavucontrol
           - pipewire-pulse
           - wireplumber
